@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: black;
+            
+        }
+        .slides{
+            position: relative;
+            top: 50px;
+            overflow: hidden;
+            display: flex;
+            width: 60%;
+            margin: auto;
+            /* border: 1px solid red; */
+            transition: transform 0.5s ease-in-out;
+}
+        
+        .slides img{
+           width: 100%;
+           height: 450px; 
+        }
+        .slides button{
+            position: absolute;
+            cursor: pointer;
+        }
+        #previous{
+            top: 50%;
+            left:0 ; 
+            font-weight: 900;
+            border-radius: 50%;
+            background: none;
+            color: white;
+            border: none;
+        }
+        #next{
+           top: 50%;
+           right: 0;
+           font-weight: 900;
+           border-radius: 50%;
+           background: none;
+           color: white;
+           border: none;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-style: italic;
+            /* border: 1px solid red; */
+            box-shadow: 10px 10px 30px red;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>IMAGE SLIDER</h1>
+    <div class="slides">
+        <img src="https://external-preview.redd.it/d6tC7-hOyuC__4Wy_5KcODi0fzEYwrnyvZSbD_wSXCs.jpg?auto=webp&s=2c71abb0192efe3d0d4aabde37523356811583dd" alt="Image 1">
+        <img src="https://cdn.pixabay.com/photo/2018/06/14/13/04/nature-3474826_1280.jpg" alt="Image 2">
+        <img src="https://c4.wallpaperflare.com/wallpaper/31/269/111/download-nature-background-images-1920x1080-wallpaper-preview.jpg" alt="Image 3">
+        <button class="btn" id="previous" onclick="previous_img()"><</button>
+      <button class="btn" id="next" onclick="next_img()">></button>
+      </div>
+      
+      <script>
+          let slideIndex=0;
+          function slide(n) {
+            let slides=document.querySelectorAll('.slides img');
+            if(n>=slides.length){
+                slideIndex=0;
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1
+            }
+            slides.forEach(slide => {
+            slide.style.display = "none";  
+            });
+            slides[slideIndex].style.display = "block";
+          }
+          function previous_img() {
+            slideIndex--;
+            slide(slideIndex);
+          }
+          function next_img() {
+            slideIndex++;
+            slide(slideIndex)
+          }
+          slide(slideIndex);
+      </script>
+</body>
+</html>
